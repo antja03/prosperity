@@ -21,14 +21,14 @@ public abstract class Transformer implements IClassTransformer {
 
         if (this.name.equals(name)) {
             byte[] bytes = classWriter(transform(classParser(basicClass)));
-            if (name.contains("Session")) {
+            if (name.contains("Minecraft")) {
                 try {
-                    FileUtils.writeByteArrayToFile(new File("Session.class"), bytes);
+                    FileUtils.writeByteArrayToFile(new File("Minecraft.class"), bytes);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            System.out.println("Transformed " + name + " using " + this.getClass().getName());
+            System.out.println("[MinecraftAPI]: Transformed " + name + " with " + this.getClass().getName());
             return bytes;
         }
         return basicClass;

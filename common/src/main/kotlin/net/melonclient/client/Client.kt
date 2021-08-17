@@ -2,16 +2,12 @@ package net.melonclient.client
 
 import me.hippo.api.lwjeb.annotation.Handler
 import melon.impl.menu.MenuListener
-import net.melonclient.client.api.event.EventBus
 import net.melonclient.client.api.event.impl.KeyDownEvent
 import net.melonclient.client.mod.ModRegistry
-import net.melonclient.client.resource.ResourceManager
-import net.melonclient.client.utils.Cursor
 import net.melonclient.minecraftapi.LwjglApi
-import net.melonclient.minecraftapi.LwjglApiInterfacingAgent
+import net.melonclient.minecraftapi.LwjglApiInit
 import net.melonclient.minecraftapi.MinecraftApi
-import net.melonclient.minecraftapi.MinecraftApiInterfacingAgent
-import net.melonclient.minecraftapi.api.minecraft.auth.Session
+import net.melonclient.minecraftapi.MinecraftApiInit
 
 
 /*
@@ -23,11 +19,17 @@ import net.melonclient.minecraftapi.api.minecraft.auth.Session
 
 object Client {
     
+    val minecraftApi: MinecraftApi
+        get() = MinecraftApiInit.minecraftApi
+    
+    val lwjglApi: LwjglApi
+        get() = LwjglApiInit.lwjglApi
+    
     val modRegistry = ModRegistry()
     val menu = MenuListener()
-    val minecraftApi = MinecraftApiInterfacingAgent.minecraftApi
-    val lwjglApi = LwjglApiInterfacingAgent.lwjglApi
+    
     fun startup() {
+        LwjglApiInit.lwjglApi.display.screenTitle = "Melon Client (Beta)"
 //        minecraftApi.minecraftClient.session = Session() {
 //
 //        }

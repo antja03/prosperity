@@ -10,7 +10,7 @@ class MinecraftApi : MinecraftApi {
         get() = "1.8.9"
     override val minecraftClient: MinecraftClient = net.melonclient.minecraft189.impl.minecraft.client.MinecraftClient()
     override val keyboard: Keyboard
-        get() = TODO("Not yet implemented")
+        get() = net.melonclient.minecraft189.impl.minecraft.input.Keyboard
     override val mouse: Mouse
-        get() = TODO("Not yet implemented")
+        get() = net.melonclient.minecraft189.impl.minecraft.input.Mouse
 }

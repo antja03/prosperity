@@ -35,5 +35,6 @@ minecraft {
 dependencies {
     implementation(project(":minecraft-api"))
     implementation(project(":common"))
+    implementation 'com.github.Hippo:LWJEB:5.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }

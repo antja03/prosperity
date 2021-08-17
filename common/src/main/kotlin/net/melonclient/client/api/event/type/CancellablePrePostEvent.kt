@@ -12,8 +12,7 @@ class CancellablePrePostEvent: PrePostEvent() {
         cancelled = true
     }
     
-    override fun <T> dispatch() :T {
+    override fun <T> dispatch() {
         cancelled = false
-        return super.dispatch()
     }
 }

@@ -4,7 +4,6 @@ import net.melonclient.minecraftapi.api.lwjgl.display.Display
 import net.melonclient.minecraftapi.api.lwjgl.opengl.IntermediateOpenGL
 import net.melonclient.minecraftapi.api.lwjgl.opengl.ModernOpenGL
 import net.melonclient.minecraftapi.api.lwjgl.opengl.Shaders
-import net.melonclient.minecraftapi.api.lwjgl.opengl.Texture
 import net.melonclient.minecraftapi.api.lwjgl.util.Buffer
 
 interface LwjglApi {
@@ -14,8 +13,6 @@ interface LwjglApi {
     val modernOpenGL: ModernOpenGL
     
     val shaders: Shaders
-    
-    val texture: Texture
     
     val display: Display
     

@@ -10,7 +10,7 @@ class MenuListener {
     @Handler
     fun onRenderOverlay(event: RenderOverlayEvent) {
         // Swap to RenderScreenEvent
-        if (Client.minecraftApi.minecraftClient.screen != null)
+        if (!Client.minecraftApi.minecraftClient.inGame)
             return
         
         menu.render()

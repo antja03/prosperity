@@ -1,6 +1,6 @@
 package net.melonclient.minecraftapi
 
-object MinecraftApiInterfacingAgent {
+object MinecraftApiInit {
     lateinit var minecraftApi: MinecraftApi
     
     private var active = false

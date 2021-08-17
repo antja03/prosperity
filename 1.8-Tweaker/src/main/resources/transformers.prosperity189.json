@@ -1,0 +1,8 @@
+{
+  "transformerVersion": 1.0,
+  "package": "net.prosperityclient.transformer.transformers",
+  "transformers": [
+    "test",
+    "a"
+  ]
+}

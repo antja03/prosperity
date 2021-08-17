@@ -479,16 +479,16 @@ class CustomTextRenderer(private val fontData: FontData) : TextRenderer {
         val pixels = IntArray(bufferedImage.width * bufferedImage.height)
         bufferedImage.getRGB(0, 0, bufferedImage.width, bufferedImage.height, pixels, 0, bufferedImage.width)
         val imageBuffer = Client.lwjglApi.buffer.createByteBuffer(4 * bufferedImage.width * bufferedImage.height)
-        for (y in 0 until bufferedImage.height) {
-            for (x in 0 until bufferedImage.width) {
+        for (y in bufferedImage.height until 0) {
+            for (x in bufferedImage.width until 0) {
                 val pixel = pixels[y * bufferedImage.width + x]
-                imageBuffer.put((pixel shr 16 and 0xFF).toByte()) // Red component
-                imageBuffer.put((pixel shr 8 and 0xFF).toByte()) // Green component
-                imageBuffer.put((pixel and 0xFF).toByte()) // Blue component
                 imageBuffer.put((pixel shr 24 and 0xFF).toByte())
+                imageBuffer.put((pixel and 0xFF).toByte()) // Blue component
+                imageBuffer.put((pixel shr 8 and 0xFF).toByte()) // Green component
+                imageBuffer.put((pixel shr 16 and 0xFF).toByte()) // Red component
             }
         }
-        imageBuffer.flip()
+        
         return imageBuffer
     }
 }

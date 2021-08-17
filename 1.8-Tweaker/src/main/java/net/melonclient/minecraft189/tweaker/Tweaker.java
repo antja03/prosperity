@@ -1,13 +1,9 @@
 package net.melonclient.minecraft189.tweaker;
 
-import net.melonclient.minecraft189.transformer.transformers.EntityClassTransformer;
-import net.melonclient.minecraft189.transformer.transformers.EntityLivingBaseTransformer;
-import net.melonclient.minecraft189.transformer.transformers.MinecraftClassTransformer;
-import net.melonclient.minecraft189.transformer.transformers.SessionTransformer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLivingBase;
+import net.melonclient.minecraft189.transformer.transformers.*;
 import net.minecraft.launchwrapper.ITweaker;
 import net.minecraft.launchwrapper.LaunchClassLoader;
+import net.prosperityclient.transformer.TransformerParser;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,6 +19,7 @@ public class Tweaker implements ITweaker {
         addArg("gameDir", gameDir);
         addArg("assetsDir", assetsDir);
         addArg("version", profile);
+        TransformerParser.INSTANCE.addConfig("transformers.prosperity189.json");
     }
 
     @Override
@@ -32,6 +29,8 @@ public class Tweaker implements ITweaker {
         classLoader.registerTransformer(EntityClassTransformer.class.getName());
         classLoader.registerTransformer(EntityLivingBaseTransformer.class.getName());
         classLoader.registerTransformer(MinecraftClassTransformer.class.getName());
+        classLoader.registerTransformer(FontRendererTransformer.class.getName());
+        classLoader.registerTransformer(KeyBindingTransformer.class.getName());
     }
 
     @Override
@@ -43,6 +42,7 @@ public class Tweaker implements ITweaker {
     public String[] getLaunchArguments() {
         return args.toArray(new String[0]);
     }
+
     private void addArg(String label, File file) {
         if (file != null)
             addArg(label, file.getAbsolutePath());

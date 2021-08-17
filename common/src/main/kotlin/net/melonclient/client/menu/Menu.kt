@@ -114,11 +114,11 @@ class Menu {
     init {
         displayMainWindow.registerCallback { _, _, new ->
             if (new) {
-                if (Client.minecraftApi.minecraftClient.screen == null) {
+                if (Client.minecraftApi.minecraftClient.inGame) {
                     Cursor.release()
                 }
             } else {
-                if (Client.minecraftApi.minecraftClient.screen == null) {
+                if (Client.minecraftApi.minecraftClient.inGame == null) {
                     Cursor.grab()
                 }
             }

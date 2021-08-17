@@ -13,9 +13,6 @@ public class EntityLivingBaseTransformer extends Transformer {
 
     @Override
     public ClassNode transform(ClassNode node) {
-        for (String anInterface : node.interfaces) {
-            System.out.println(anInterface);
-        }
         node.interfaces.add(Type.getInternalName(LivingEntity.class));
 
         return node;

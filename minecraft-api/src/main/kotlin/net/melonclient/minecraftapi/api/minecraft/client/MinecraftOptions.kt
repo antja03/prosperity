@@ -4,5 +4,5 @@ import net.melonclient.minecraftapi.api.minecraft.input.Keybind
 
 interface MinecraftOptions {
     
-    fun keybind(id: String): Keybind
+    fun keybind(id: String): Keybind?
 }

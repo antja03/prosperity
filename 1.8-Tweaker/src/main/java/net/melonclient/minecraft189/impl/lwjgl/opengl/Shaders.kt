@@ -1,4 +1,6 @@
 package net.melonclient.minecraft189.impl.lwjgl.opengl
 
-class Shaders {
+import net.melonclient.minecraftapi.api.lwjgl.opengl.Shaders
+
+class Shaders : Shaders {
 }

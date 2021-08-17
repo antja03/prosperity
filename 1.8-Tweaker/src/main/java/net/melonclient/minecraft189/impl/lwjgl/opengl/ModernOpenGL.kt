@@ -1,4 +1,6 @@
 package net.melonclient.minecraft189.impl.lwjgl.opengl
 
-class ModernOpenGL {
+import net.melonclient.minecraftapi.api.lwjgl.opengl.ModernOpenGL
+
+class ModernOpenGL : ModernOpenGL{
 }

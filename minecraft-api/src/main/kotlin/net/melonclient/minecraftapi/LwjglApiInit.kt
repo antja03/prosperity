@@ -1,6 +1,6 @@
 package net.melonclient.minecraftapi
 
-object LwjglApiInterfacingAgent {
+object LwjglApiInit {
     lateinit var lwjglApi: LwjglApi
     
     private var active = false

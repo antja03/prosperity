@@ -13,11 +13,15 @@ class ToggleSprint : Mod("default.toggle_sprint") {
     @Handler
     fun onGameTick(event: GameTickEvent) {
         val sprintKeybind = Client.minecraftApi.minecraftClient.options.keybind("sprint")
-        
-        if (sprintKeybind.pressed)
-            toggled = !toggled
-        
-        sprintKeybind.pressed = toggled
+    
+        if (sprintKeybind != null) {
+            if (sprintKeybind.pressed)
+                toggled = !toggled
+        }
+    
+        if (sprintKeybind != null) {
+            sprintKeybind.pressed = toggled
+        }
     }
     
     @Handler

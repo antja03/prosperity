@@ -3,11 +3,8 @@ package net.melonclient.minecraft189.transformer.transformers;
 import net.melonclient.minecraft189.interfaces.MinecraftHook;
 import net.melonclient.minecraft189.utils.asm.MethodNodeUtils;
 import org.objectweb.asm.Type;
-import net.melonclient.minecraft189.impl.minecraft.MinecraftApi;
 import net.melonclient.minecraft189.transformer.Transformer;
-import net.melonclient.minecraftapi.MinecraftApiInterfacingAgent;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.Session;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
@@ -23,12 +20,21 @@ public class MinecraftClassTransformer extends Transformer {
     public ClassNode transform(ClassNode node) {
         for (MethodNode method : node.methods) {
             startGenCode(method);
-
+            gameTickGenCode(method);
         }
         node.interfaces.add(Type.getInternalName(MinecraftHook.class));
-        MethodNodeUtils.setMethodGen(node, "setSession", "(Ljava/lang/String;)V", "session", "Ljava/lang/String;", true);
+        MethodNodeUtils.setMethodGen(node, "setSession", "(Ljava/lang/String;)V", "session", "Ljava/lang/String;", true, Opcodes.ALOAD);
 
         return node;
+    }
+    private void gameTickGenCode(MethodNode methodNode) {
+        if(methodNode.name.startsWith("runTick")) {
+            InsnList insnList = new InsnList();
+//            GameTickEvent.INSTANCE.dispatch();
+            insnList.add(new FieldInsnNode(Opcodes.GETSTATIC, "net/melonclient/client/api/event/impl/GameTickEvent", "INSTANCE", "Lnet/melonclient/client/api/event/impl/GameTickEvent;"));
+            insnList.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "net/melonclient/client/api/event/Event", "dispatch", "()V", false));
+            methodNode.instructions.insert(methodNode.instructions.getFirst(), insnList);
+        }
     }
 
     private void startGenCode(MethodNode method) {
@@ -46,7 +52,5 @@ public class MinecraftClassTransformer extends Transformer {
 
             }
         }
-
-
     }
 }
