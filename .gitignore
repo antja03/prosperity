@@ -1,0 +1,14 @@
+!.gitignore
+
+*.class
+*.png
+*.jpg
+
+.gradle/**
+.idea/**
+.minecraft/**
+gradle/**
+java/**
+
+1.8-Tweaker/.gradle/**
+1.8-Tweaker/build/**
