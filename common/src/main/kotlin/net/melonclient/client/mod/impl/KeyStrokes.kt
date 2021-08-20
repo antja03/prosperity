@@ -1,6 +1,6 @@
 package net.melonclient.client.mod.impl
 
-import me.hippo.api.lwjeb.annotation.Handler
+import rip.hippo.lwjeb.annotation.Handler
 import net.melonclient.client.api.event.impl.RenderOverlayEvent
 import net.melonclient.client.mod.Mod
 import net.melonclient.client.utils.Colors

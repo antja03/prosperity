@@ -1,0 +1,7 @@
+{
+  "transformerVersion": 1.0,
+  "package": "net.melonclient.minecraft189.transformers",
+  "transformers": [
+    "MinecraftTransformer"
+  ]
+}

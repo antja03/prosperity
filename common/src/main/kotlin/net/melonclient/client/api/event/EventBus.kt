@@ -1,9 +1,9 @@
 package net.melonclient.client.api.event
 
-import me.hippo.api.lwjeb.bus.PubSub
-import me.hippo.api.lwjeb.configuration.BusConfigurations
-import me.hippo.api.lwjeb.configuration.config.impl.BusPubSubConfiguration
-import me.hippo.api.lwjeb.subscribe.impl.StrongReferencedListenerSubscriber
+import rip.hippo.lwjeb.bus.PubSub
+import rip.hippo.lwjeb.configuration.BusConfigurations
+import rip.hippo.lwjeb.configuration.config.impl.BusPubSubConfiguration
+import rip.hippo.lwjeb.subscribe.impl.StrongReferencedListenerSubscriber
 
 object EventBus {
     

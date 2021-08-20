@@ -1,6 +1,6 @@
 package melon.impl.menu
 
-import me.hippo.api.lwjeb.annotation.Handler
+import rip.hippo.lwjeb.annotation.Handler
 import net.melonclient.client.Client
 import net.melonclient.client.api.event.impl.*
 

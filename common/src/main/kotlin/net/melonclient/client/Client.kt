@@ -1,6 +1,5 @@
 package net.melonclient.client
 
-import me.hippo.api.lwjeb.annotation.Handler
 import melon.impl.menu.MenuListener
 import net.melonclient.client.api.event.impl.KeyDownEvent
 import net.melonclient.client.mod.ModRegistry
@@ -8,6 +7,7 @@ import net.melonclient.minecraftapi.LwjglApi
 import net.melonclient.minecraftapi.LwjglApiInit
 import net.melonclient.minecraftapi.MinecraftApi
 import net.melonclient.minecraftapi.MinecraftApiInit
+import rip.hippo.lwjeb.annotation.Handler
 
 
 /*

@@ -12,3 +12,15 @@ java/**
 
 1.8-Tweaker/.gradle/**
 1.8-Tweaker/build/**
+
+
+common/.gradle/**
+common/build/**
+
+
+minecraft-api/.gradle/**
+minecraft-api/build/**
+
+
+transformer/.gradle/**
+transformer/build/**

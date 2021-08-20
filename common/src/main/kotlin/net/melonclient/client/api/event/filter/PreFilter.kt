@@ -1,6 +1,6 @@
 package net.melonclient.client.api.event.filter
 
-import me.hippo.api.lwjeb.filter.MessageFilter
+import rip.hippo.lwjeb.filter.MessageFilter
 import net.melonclient.client.api.event.type.PrePostEvent
 
 class PreFilter: MessageFilter<PrePostEvent> {
