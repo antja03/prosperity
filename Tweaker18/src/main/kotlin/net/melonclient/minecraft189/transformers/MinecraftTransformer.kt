@@ -1,27 +1,22 @@
 package net.melonclient.minecraft189.transformers
 
+import jdk.internal.org.objectweb.asm.Opcodes
 import net.minecraft.client.Minecraft
-import net.prosperityclient.tweaker.dsl.injectInstructions
+import net.prosperityclient.tweaker.dsl.*
 import net.prosperityclient.tweaker.transformer.api.transformer.Transformer
 import net.prosperityclient.tweaker.transformer.api.transformer.TransformerInfo
-import org.objectweb.asm.Opcodes
 import org.objectweb.asm.tree.ClassNode
-import org.objectweb.asm.tree.FieldInsnNode
-import org.objectweb.asm.tree.LdcInsnNode
-import org.objectweb.asm.tree.MethodInsnNode
+import java.io.PrintStream
 
-@TransformerInfo(Minecraft::class, 1.0)
-class MinecraftTransformer : Transformer {
-    override fun transform(node: ClassNode) {
-        node.methods.forEach {
-            if(it.name == "startGame") {
-                it.injectInstructions(true) {
-                    +FieldInsnNode(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;")
-                    +LdcInsnNode("[Transformer]: Hello, World!")
-                    +MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false)
+    @TransformerInfo(Minecraft::class, 1.0)
+    class MinecraftTransformer : Transformer {
+        override fun transform(node: ClassNode) {
+            node.method("startGame", "()V") {
+                it.insert(it.instructions.first) {
+                    +field(Opcodes.GETSTATIC, System::class, "out", PrintStream::class)
+                    +string("Hello, Prosperity!")
+                    +method(Opcodes.INVOKEVIRTUAL, PrintStream::class, "println", arrayOf(), Void::class)
                 }
-                return@forEach
             }
         }
     }
-}

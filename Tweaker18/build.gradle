@@ -3,7 +3,7 @@ buildscript {
         jcenter()
         maven {
             name = "forge"
-            url = "http://maven.minecraftforge.net"
+            url = "https://maven.minecraftforge.net"
         }
         maven {
             name = "jitpack"
@@ -15,16 +15,10 @@ buildscript {
     }
 }
 plugins {
-
     id 'org.jetbrains.kotlin.jvm'
 }
 apply plugin: 'net.minecraftforge.gradle.tweaker-client'
-repositories {
-    maven {
-        name = "jitpack"
-        url = "https://jitpack.io/"
-    }
-}
+
 
 version = "1.0"
 group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -36,11 +30,15 @@ minecraft {
     tweakClass = "net.melonclient.minecraft189.tweaker.Minecraft189TweakerKt"
     mappings = "stable_22"
 }
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://jitpack.io'
+    }
+}
 
 dependencies {
-    implementation(project(":minecraft-api"))
+    implementation(project(':minecraft-api'))
     implementation(project(":transformer"))
     implementation(project(":common"))
-    implementation 'com.github.Hippo:LWJEB:5.3.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }

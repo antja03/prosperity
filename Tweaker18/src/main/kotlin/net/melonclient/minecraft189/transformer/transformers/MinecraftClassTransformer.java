@@ -1,9 +1,6 @@
 package net.melonclient.minecraft189.transformer.transformers;
 
-import net.melonclient.minecraft189.interfaces.MinecraftHook;
-import net.melonclient.minecraft189.utils.asm.MethodNodeUtils;
 import org.objectweb.asm.Type;
-import net.melonclient.minecraft189.transformer.Transformer;
 import net.minecraft.client.Minecraft;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
