@@ -43,3 +43,9 @@ fun MethodNode.insert(
         }
     }
 }
+
+fun MethodNode.insert(add: InstructionList.() -> Unit) {
+    val list = InstructionList()
+    list.add()
+    this.instructions.insert(this.instructions.first, list)
+}

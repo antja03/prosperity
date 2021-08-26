@@ -25,7 +25,7 @@ class Tweaker : ITweaker, Loader {
         TransformerParser.init(this)
         transformers.forEach {
             if (classLoader != null) {
-                fuckLaunchWrapper(classLoader).add(IClassTransformer { name, _, basicClass ->
+                getTransformerList(classLoader).add(IClassTransformer { name, _, basicClass ->
                     when (basicClass) {
                         null -> {
                             ByteArray(0)
@@ -69,14 +69,14 @@ class Tweaker : ITweaker, Loader {
         transformers += transformer
     }
     
-    private fun fuckLaunchWrapper(launchClassLoader: LaunchClassLoader): MutableList<IClassTransformer> {
+    private fun getTransformerList(launchClassLoader: LaunchClassLoader): MutableList<IClassTransformer> {
         launchClassLoader::class.java.declaredFields.forEach {
             if (it.name == "transformers") {
                 it.isAccessible = true
                 return it.get(launchClassLoader)!! as MutableList<IClassTransformer>
             }
         }
-        return mutableListOf<IClassTransformer>()
+        return mutableListOf()
     }
     
 }

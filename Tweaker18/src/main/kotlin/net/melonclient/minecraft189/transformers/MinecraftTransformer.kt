@@ -8,15 +8,15 @@ import net.prosperityclient.tweaker.transformer.api.transformer.TransformerInfo
 import org.objectweb.asm.tree.ClassNode
 import java.io.PrintStream
 
-    @TransformerInfo(Minecraft::class, 1.0)
-    class MinecraftTransformer : Transformer {
-        override fun transform(node: ClassNode) {
-            node.method("startGame", "()V") {
-                it.insert(it.instructions.first) {
-                    +field(Opcodes.GETSTATIC, System::class, "out", PrintStream::class)
-                    +string("Hello, Prosperity!")
-                    +method(Opcodes.INVOKEVIRTUAL, PrintStream::class, "println", arrayOf(), Void::class)
-                }
+@TransformerInfo(Minecraft::class, 1.0)
+class MinecraftTransformer : Transformer {
+    override fun transform(node: ClassNode) {
+        node.method("startGame", "()V") {
+            it.insert(it.instructions.first) {
+                +field(Opcodes.GETSTATIC, System::class, "out", PrintStream::class)
+                +string("Hello, Prosperity!")
+                +method(Opcodes.INVOKEVIRTUAL, PrintStream::class, "println", arrayOf(String::class), Void.TYPE.kotlin)
             }
         }
     }
+}

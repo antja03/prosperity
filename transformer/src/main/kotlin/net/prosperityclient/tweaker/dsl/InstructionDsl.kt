@@ -20,11 +20,14 @@ fun number(number: Number): AbstractInsnNode = when (number) {
     }
 }
 
+fun `var`(type: Int, opcode: Int) = VarInsnNode(opcode, type)
+
 fun field(opcode: Int, owner: KClass<*>, name: String, type: KClass<*>) = FieldInsnNode(
     opcode,
     owner.qualifiedName!!.replace(".", "/", true), name, Type.getDescriptor(type.java)
 )
 
+fun field(opcode: Int, owner: String, node: FieldNode) = FieldInsnNode(opcode, owner, node.name, node.desc)
 fun method(opcode: Int, owner: KClass<*>, name: String, desc: Array<KClass<*>>, ret: KClass<*>): MethodInsnNode {
     val descRet = StringBuilder()
     @Suppress("NAME_SHADOWING") val ret = Type.getDescriptor(ret.java)
@@ -41,9 +44,11 @@ fun method(opcode: Int, owner: KClass<*>, name: String, desc: Array<KClass<*>>, 
 }
 
 fun label() = LabelNode()
-
 fun string(name: String) = LdcInsnNode(name)
-private fun numberInt(number: Int): AbstractInsnNode {
+
+fun insn(opcode: Int) = InsnNode(opcode)
+
+fun numberInt(number: Int): AbstractInsnNode {
 
     if (number > Byte.MIN_VALUE && number < Byte.MAX_VALUE) {
         return IntInsnNode(Opcodes.BIPUSH, number)
